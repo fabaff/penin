@@ -1,0 +1,10 @@
+cement==3.0.2
+jinja2
+pyyaml
+colorlog
+tinydb
+dnspython3
+netifaces
+scapy
+requests
+webtech
