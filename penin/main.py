@@ -51,6 +51,7 @@ class PenIn(App):
         # Register handlers
         handlers = [
             Base,
+            Misc,
         ]
 
         # Register hooks
