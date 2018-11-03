@@ -7,7 +7,6 @@ from tinydb import TinyDB
 
 def extend_tinydb(app):
     """Add support for TinyDB."""
-    app.log.error("hhhhhhhhhhhhhhhhhh")
     app.log.info('Extending PenIn with TinyDB')
     db_file = app.config.get('penin', 'db_file')
 
