@@ -3,6 +3,7 @@ from cement import App, TestApp, init_defaults
 from cement.core.exc import CaughtSignal
 from penin.controllers.base import Base
 from penin.controllers.ip import Ip
+from penin.controllers.dns import Dns
 from penin.controllers.misc import Misc
 from penin.core.exc import PenInError
 from penin.helpers import extend_tinydb
@@ -50,6 +51,7 @@ class PenIn(App):
             Base,
             Misc,
             Ip,
+            Dns,
         ]
 
         # Register hooks
