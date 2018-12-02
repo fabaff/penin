@@ -49,9 +49,9 @@ class PenIn(App):
         # Register handlers
         handlers = [
             Base,
-            Misc,
-            Ip,
             Dns,
+            Ip,
+            Misc,
         ]
 
         # Register hooks
