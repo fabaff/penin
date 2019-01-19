@@ -4,6 +4,7 @@ from cement.core.exc import CaughtSignal
 from penin.controllers.base import Base
 from penin.controllers.dns import Dns
 from penin.controllers.ip import Ip
+from penin.controllers.http import Http
 from penin.controllers.misc import Misc
 from penin.core.exc import PenInError
 from penin.helpers import extend_tinydb
@@ -51,6 +52,7 @@ class PenIn(App):
             Base,
             Dns,
             Ip,
+            Http,
             Misc,
         ]
 
