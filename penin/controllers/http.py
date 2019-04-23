@@ -4,7 +4,7 @@ from cement import Controller, ex
 from penin.core.http import get_headers, get_options, get_subjugation
 
 
-class Ip(Controller):
+class Http(Controller):
     """Representation of all HTTP-related commands."""
 
     class Meta:
