@@ -31,7 +31,7 @@ class Http(Controller):
         self.app.render(data, "default.jinja2")
 
     @ex(
-        help="retrieve the HTTP headers of a web server",
+        help="retrieve the HTTP options of a web server",
         arguments=[(["target"], {"help": "IP address of the target server"})],
 
     )
@@ -47,12 +47,12 @@ class Http(Controller):
         self.app.render(data, "default.jinja2")
 
     @ex(
-        help="retrieve the HTTP headers of a web server",
+        help="retrieve the location of a subjugation",
         arguments=[(["target"], {"help": "IP address of the target server"})],
 
     )
     def subjugation(self):
-        """Retrieve the HTTP headers of a web server."""
+        """Retrieve the location of a subjugation."""
         data = {}
 
         result = get_subjugation(self.app.pargs.target)
@@ -70,7 +70,7 @@ class Http(Controller):
         self.app.render(data, "default.jinja2")
 
     @ex(
-        help="retrieve the HTTP headers of a web server",
+        help="ientify the used technology of a web server",
         arguments=[(["target"], {"help": "IP address of the target server"})],
 
     )
