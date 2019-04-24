@@ -1,4 +1,4 @@
-{% if result is iterable %}
+{% if result is iterable and result is not string %}
 {% for key, value in result.items() %}{{ key }}: {{ value }}
 {% endfor %}
 {% endif %}
