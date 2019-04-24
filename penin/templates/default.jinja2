@@ -1,2 +1,7 @@
-
-Result => {{ result }}
+{% if result is string %}
+{{ result }}
+{% else %}
+{% for key, value in result.items() %}
+{{ key }}: {{ value }}
+{% endfor %}
+{% endif %}
