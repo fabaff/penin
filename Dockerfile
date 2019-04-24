@@ -1,4 +1,4 @@
-FROM python:3.6-alpine
+FROM python:3.9-alpine
 MAINTAINER Fabian Affolter <fabian@affolter-engineering.ch>
 ENV PS1="\[\e[0;33m\]|> penin <| \[\e[1;35m\]\W\[\e[0m\] \[\e[0m\]# "
 
