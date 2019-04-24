@@ -1,7 +1,7 @@
 """Support for retrieving details about HTTP servers."""
 from cement import Controller, ex
 
-from penin.core.http import get_headers, get_options, get_subjugation
+from penin.core.http import get_headers, get_options, get_subjugation, get_tech
 
 
 class Http(Controller):
@@ -69,4 +69,19 @@ class Http(Controller):
 
         self.app.render(data, "default.jinja2")
 
+    @ex(
+        help="retrieve the HTTP headers of a web server",
+        arguments=[(["target"], {"help": "IP address of the target server"})],
 
+    )
+    def tech(self):
+        """Identify the used technology of the web server."""
+        result = get_tech(self.app.pargs.target)
+
+        if result is None:
+            self.app.log.error("Unable to determine the technology")
+            return
+
+        data = {"result": result}
+
+        self.app.render(data, "default.jinja2")

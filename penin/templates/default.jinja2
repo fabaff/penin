@@ -1,6 +1,7 @@
-{% if result is string %}
-{{ result }}
-{% else %}
+{% if result is iterable %}
 {% for key, value in result.items() %}{{ key }}: {{ value }}
 {% endfor %}
+{% endif %}
+{% if result is string %}
+{{ result }}
 {% endif %}
