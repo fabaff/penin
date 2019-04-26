@@ -62,3 +62,10 @@ def get_tech(server):
         return result
     except webtech.utils.ConnectionException:
         return None
+
+
+def get_social_media(target):
+    """Extract social media accounts from a website."""
+    from extract_social_media import _from_url
+    result = _from_url(target)
+    return result

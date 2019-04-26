@@ -1,6 +1,7 @@
 cement==3.0.2
 colorlog
 dnspython3
+extract-social-media
 ipwhois
 jinja2
 netifaces
