@@ -5,6 +5,7 @@ extract-social-media
 ipwhois
 jinja2
 netifaces
+python-masscan
 python-whois-extended
 pyyaml
 requests
