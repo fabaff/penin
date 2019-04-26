@@ -1,8 +1,10 @@
 cement==3.0.2
 colorlog
 dnspython3
+ipwhois
 jinja2
 netifaces
+python-whois-extended
 pyyaml
 requests
 scapy
