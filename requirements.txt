@@ -4,6 +4,7 @@ dnspython3
 ipwhois
 jinja2
 netifaces
+python-masscan
 python-whois-extended
 pyyaml
 requests

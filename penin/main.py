@@ -7,6 +7,7 @@ from penin.controllers.ip import Ip
 from penin.controllers.http import Http
 from penin.controllers.misc import Misc
 from penin.controllers.whois import Whois
+from penin.controllers.port_scan import PortSan
 from penin.core.exc import PenInError
 from penin.helpers import extend_tinydb
 
@@ -52,9 +53,10 @@ class PenIn(App):
         handlers = [
             Base,
             Dns,
-            Ip,
             Http,
+            Ip,
             Misc,
+            PortSan,
             Whois,
         ]
 
