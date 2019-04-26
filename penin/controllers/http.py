@@ -70,7 +70,7 @@ class Http(Controller):
         self.app.render(data, "default.jinja2")
 
     @ex(
-        help="ientify the used technology of a web server",
+        help="identify the used technology of a web server",
         arguments=[(["target"], {"help": "IP address of the target server"})],
 
     )
