@@ -1,7 +1,8 @@
 """Support for retrieving details about HTTP servers."""
 from cement import Controller, ex
 
-from penin.core.http import get_headers, get_options, get_subjugation, get_tech
+from penin.core.http import get_headers, get_options, get_subjugation, \
+    get_tech, get_social_media
 
 
 class Http(Controller):
@@ -83,5 +84,22 @@ class Http(Controller):
             return
 
         data = {"result": result}
+
+        self.app.render(data, "default.jinja2")
+
+    @ex(
+        help="identify listed social media accounts",
+        arguments=[(["target"], {"help": "The URL to check"})],
+
+    )
+    def social_media(self):
+        """Extract social media accounts from a website."""
+        result = get_social_media(self.app.pargs.target)
+
+        if result is None:
+            self.app.log.error("Unable to determine the technology")
+            return
+
+        data = {"result": {'accounts': result}}
 
         self.app.render(data, "default.jinja2")
