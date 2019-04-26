@@ -6,6 +6,7 @@ from penin.controllers.dns import Dns
 from penin.controllers.ip import Ip
 from penin.controllers.http import Http
 from penin.controllers.misc import Misc
+from penin.controllers.whois import Whois
 from penin.core.exc import PenInError
 from penin.helpers import extend_tinydb
 
@@ -54,6 +55,7 @@ class PenIn(App):
             Ip,
             Http,
             Misc,
+            Whois,
         ]
 
         # Register hooks
