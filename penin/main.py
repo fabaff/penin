@@ -3,6 +3,7 @@ from cement import App, TestApp, init_defaults
 from cement.core.exc import CaughtSignal
 from penin.controllers.base import Base
 from penin.controllers.dns import Dns
+from penin.controllers.icmp import Icmp
 from penin.controllers.ip import Ip
 from penin.controllers.http import Http
 from penin.controllers.misc import Misc
@@ -54,6 +55,7 @@ class PenIn(App):
             Base,
             Dns,
             Http,
+            Icmp,
             Ip,
             Misc,
             PortSan,
