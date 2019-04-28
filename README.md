@@ -16,9 +16,17 @@ $ pip3 install setup.py
 ## Usage
 
 All available commands are grouped.
+to execute.
 
 ```bash
 $ penin --help
+```
+
+Some commands require elevated permission. Those are only working if executed
+as root.
+
+```bash
+$ sudo bin/penin --help
 ```
 
 ## Documentation
