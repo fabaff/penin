@@ -1,12 +1,13 @@
-
+#!/usr/bin/env python3
+"""PenIn setup script."""
 from setuptools import setup, find_packages
 from penin.core.version import get_version
 
 VERSION = get_version()
 
-f = open('README.md', 'r')
-LONG_DESCRIPTION = f.read()
-f.close()
+readme_file = open('README.md', 'r')
+LONG_DESCRIPTION = readme_file.read()
+readme_file.close()
 
 setup(
     name='penin',
