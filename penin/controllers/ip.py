@@ -3,7 +3,7 @@ from cement import Controller, ex
 
 from penin.core.ip import (
     get_external_ip, get_gateways, get_internal_ip,
-    get_location, get_asn)
+    get_location, get_asn, get_network_details, get_ips)
 
 
 class Ip(Controller):
@@ -85,6 +85,36 @@ class Ip(Controller):
 
         if result is None:
             self.app.log.error("Unable to get the ASN details")
+            return
+
+        data = {"result": result}
+        self.app.render(data, "default.jinja2")
+
+    @ex(
+        help="details about an IPv4 network",
+        arguments=[(["network"], {"help": "network to lookup"})],
+    )
+    def network(self):
+        """Get the of an IP address."""
+        result = get_network_details(str(self.app.pargs.network))
+
+        if result is None:
+            self.app.log.error("Unable to get the network details")
+            return
+
+        data = {"result": result}
+        self.app.render(data, "default.jinja2")
+
+    @ex(
+        help="get all IPs in an IPv4 network",
+        arguments=[(["network"], {"help": "network to lookup"})],
+    )
+    def ips(self):
+        """Get the of an IP address."""
+        result = get_ips(str(self.app.pargs.network))
+
+        if result is None:
+            self.app.log.error("Unable to get hosts")
             return
 
         data = {"result": result}
