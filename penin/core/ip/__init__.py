@@ -61,3 +61,29 @@ def get_asn(ip_address):
         return data
     except requests.exceptions.ConnectionError:
         return None
+
+
+def get_network_details(network):
+    """List all IP addresses in the network."""
+    from ipaddress import ip_network
+
+    network_data = ip_network(network)
+    data = {
+        'network': network,
+        'netmask': network_data.netmask,
+        'hostmask': network_data.hostmask,
+        'total_hosts': network_data.num_addresses,
+        'network_address': network_data.network_address,
+        'broadcast_address': network_data.broadcast_address,
+        'private': network_data.is_private,
+    }
+
+    print(data)
+
+
+def get_ips(network):
+    """List all IP addresses in the network."""
+    from ipaddress import ip_network
+    data = list(ip_network(network).hosts())
+
+    print(data)
