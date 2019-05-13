@@ -1,8 +1,7 @@
 """Support for retrieving details about HTTP servers."""
 from cement import Controller, ex
-
-from penin.core.http import get_headers, get_options, get_subjugation, \
-    get_tech, get_social_media
+from penin.core.http import (
+    get_headers, get_options, get_social_media, get_subjugation, get_tech)
 
 
 class Http(Controller):
@@ -18,7 +17,6 @@ class Http(Controller):
     @ex(
         help="retrieve the HTTP headers of a web server",
         arguments=[(["target"], {"help": "IP address of the target server"})],
-
     )
     def headers(self):
         """Retrieve the HTTP headers of a web server."""
@@ -34,7 +32,6 @@ class Http(Controller):
     @ex(
         help="retrieve the HTTP options of a web server",
         arguments=[(["target"], {"help": "IP address of the target server"})],
-
     )
     def options(self):
         """Retrieve the HTTP options of a web server."""
@@ -50,7 +47,6 @@ class Http(Controller):
     @ex(
         help="retrieve the location of a subjugation",
         arguments=[(["target"], {"help": "IP address of the target server"})],
-
     )
     def subjugation(self):
         """Retrieve the location of a subjugation."""
@@ -73,7 +69,6 @@ class Http(Controller):
     @ex(
         help="identify the used technology of a web server",
         arguments=[(["target"], {"help": "IP address of the target server"})],
-
     )
     def tech(self):
         """Identify the used technology of the web server."""
@@ -90,7 +85,6 @@ class Http(Controller):
     @ex(
         help="identify listed social media accounts",
         arguments=[(["target"], {"help": "The URL to check"})],
-
     )
     def social_media(self):
         """Extract social media accounts from a website."""
@@ -100,6 +94,6 @@ class Http(Controller):
             self.app.log.error("Unable to determine the technology")
             return
 
-        data = {"result": {'accounts': result}}
+        data = {"result": {"accounts": result}}
 
         self.app.render(data, "default.jinja2")

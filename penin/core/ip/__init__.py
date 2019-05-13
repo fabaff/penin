@@ -4,7 +4,6 @@ import ipaddress
 from netifaces import (
     AF_INET, AF_INET6, AF_LINK, gateways, ifaddresses, interfaces)
 import requests
-from dns import resolver
 
 
 def get_external_ip():
@@ -56,8 +55,9 @@ def get_gateways():
 def get_asn(ip_address):
     """Get the ASN details of a give IP address."""
     try:
-        data = requests.get("https://api.iptoasn.com/v1/as/ip/{}".format(ip_address),
-                            timeout=5).text
+        data = requests.get(
+            "https://api.iptoasn.com/v1/as/ip/{}".format(ip_address), timeout=5
+        ).text
         return data
     except requests.exceptions.ConnectionError:
         return None
@@ -69,13 +69,13 @@ def get_network_details(network):
 
     network_data = ip_network(network)
     data = {
-        'network': network,
-        'netmask': network_data.netmask,
-        'hostmask': network_data.hostmask,
-        'total_hosts': network_data.num_addresses,
-        'network_address': network_data.network_address,
-        'broadcast_address': network_data.broadcast_address,
-        'private': network_data.is_private,
+        "network": network,
+        "netmask": network_data.netmask,
+        "hostmask": network_data.hostmask,
+        "total_hosts": network_data.num_addresses,
+        "network_address": network_data.network_address,
+        "broadcast_address": network_data.broadcast_address,
+        "private": network_data.is_private,
     }
 
     print(data)
@@ -84,6 +84,7 @@ def get_network_details(network):
 def get_ips(network):
     """List all IP addresses in the network."""
     from ipaddress import ip_network
+
     data = list(ip_network(network).hosts())
 
     print(data)

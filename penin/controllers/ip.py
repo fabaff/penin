@@ -1,9 +1,8 @@
 """Support for retrieving details about IP addresses in use."""
 from cement import Controller, ex
-
 from penin.core.ip import (
-    get_external_ip, get_gateways, get_internal_ip,
-    get_location, get_asn, get_network_details, get_ips)
+    get_asn, get_external_ip, get_gateways, get_internal_ip, get_ips,
+    get_location, get_network_details)
 
 
 class Ip(Controller):
@@ -16,9 +15,7 @@ class Ip(Controller):
         stacked_type = "nested"
         stacked_on = "base"
 
-    @ex(
-        help="retrieve the local IP address",
-    )
+    @ex(help="retrieve the local IP address")
     def local(self):
         """Retrieve the local IP address."""
         result = get_internal_ip()
@@ -30,9 +27,7 @@ class Ip(Controller):
         data = {"result": result}
         self.app.render(data, "default.jinja2")
 
-    @ex(
-        help="retrieve the external IP address",
-    )
+    @ex(help="retrieve the external IP address")
     def external(self):
         """Retrieve the external IP address."""
         result = get_external_ip()
@@ -43,7 +38,6 @@ class Ip(Controller):
 
         data = {"result": result}
         self.app.render(data, "default.jinja2")
-
 
     @ex(
         help="perform a reverse lookup of an IP address",
@@ -60,10 +54,7 @@ class Ip(Controller):
         data = {"result": result}
         self.app.render(data, "default.jinja2")
 
-
-    @ex(
-        help="perform a reverse lookup of an IP address",
-    )
+    @ex(help="perform a reverse lookup of an IP address")
     def gateways(self):
         """Get all gateways for the interfaces."""
         result = get_gateways()

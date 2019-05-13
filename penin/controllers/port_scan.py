@@ -1,6 +1,5 @@
 """Support for retrieving details about HTTP servers."""
 from cement import Controller, ex
-
 from penin.core.port_scan import run_masscan
 
 
@@ -16,9 +15,10 @@ class PortSan(Controller):
 
     @ex(
         help="run masscan",
-        arguments=[(["target"], {"help": "IP address of the target server"}),
-                   (["ports"], {"help": "Ports to scan", 'default': '1-65535'})],
-
+        arguments=[
+            (["target"], {"help": "IP address of the target server"}),
+            (["ports"], {"help": "Ports to scan", "default": "1-65535"}),
+        ],
     )
     def masscan(self):
         """Run masscan."""

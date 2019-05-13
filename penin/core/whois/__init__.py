@@ -1,8 +1,8 @@
 """Support for retrieving whois information about sources."""
 import ipaddress
 
-import whois
 from ipwhois import IPWhois
+import whois
 
 
 def get_whois(target):

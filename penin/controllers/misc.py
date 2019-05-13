@@ -2,8 +2,7 @@
 import base64
 
 from cement import Controller, ex
-
-from penin.core import get_host_details, create_hash
+from penin.core import create_hash, get_host_details
 
 ALGORITHMS = [
     "md5",
@@ -76,11 +75,13 @@ class Misc(Controller):
     def base64(self):
         """Retrieve details about the host."""
         if self.app.pargs.decode:
-            result = base64.b64decode(
-                self.app.pargs.string).decode("utf-8", "ignore")
+            result = base64.b64decode(self.app.pargs.string).decode(
+                "utf-8", "ignore"
+            )
         if self.app.pargs.encode:
-            result = base64.b64encode(
-                self.app.pargs.string.encode()).decode("utf-8", "ignore")
+            result = base64.b64encode(self.app.pargs.string.encode()).decode(
+                "utf-8", "ignore"
+            )
         if result is None:
             self.app.log.error("Unable to handle the string")
             return

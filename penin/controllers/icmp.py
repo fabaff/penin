@@ -1,6 +1,5 @@
 """Support for performing ICMP requests."""
 from cement import Controller, ex
-
 from penin.core.icmp import create_icmp_request
 
 
@@ -16,14 +15,7 @@ class Icmp(Controller):
 
     @ex(
         help="create an ICMP echo (type 0) request",
-        arguments=[
-            (
-                ["destination"],
-                {
-                    "help": "destination for the request",
-                },
-            )
-        ],
+        arguments=[(["destination"], {"help": "destination for the request"})],
     )
     def echo(self):
         """Create an ICMP echo (type 0) request."""
