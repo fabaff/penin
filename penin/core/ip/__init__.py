@@ -64,27 +64,26 @@ def get_asn(ip_address):
 
 
 def get_network_details(network):
-    """List all IP addresses in the network."""
+    """Get the details about the network the IP address belongs to."""
     from ipaddress import ip_network
+    data = {}
 
-    network_data = ip_network(network)
-    data = {
-        "network": network,
-        "netmask": network_data.netmask,
-        "hostmask": network_data.hostmask,
-        "total_hosts": network_data.num_addresses,
-        "network_address": network_data.network_address,
-        "broadcast_address": network_data.broadcast_address,
-        "private": network_data.is_private,
-    }
+    network_data = ip_network(network, strict=False)
+    data["network"] = network
+    data["netmask"] = network_data.netmask
+    data["hostmask"] = network_data.hostmask
+    data["total_hosts"] = network_data.num_addresses
+    data["network_address"] = network_data.network_address
+    data["broadcast_address"] = network_data.broadcast_address
+    data["private"] = network_data.is_private
 
-    print(data)
+    return data
 
 
 def get_ips(network):
     """List all IP addresses in the network."""
     from ipaddress import ip_network
 
-    data = list(ip_network(network).hosts())
+    data = {"hosts": [str(ip) for ip in ip_network(network).hosts()]}
 
-    print(data)
+    return data
