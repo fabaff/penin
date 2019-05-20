@@ -4,6 +4,7 @@ dnspython3
 extract-social-media
 ipwhois
 jinja2
+netdisco
 netifaces
 python-masscan
 python-whois-extended

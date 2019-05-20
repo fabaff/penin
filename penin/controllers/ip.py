@@ -85,8 +85,8 @@ class Ip(Controller):
         help="details about an IPv4 network",
         arguments=[(["network"], {"help": "network to lookup"})],
     )
-    def network(self):
-        """Get the of an IP address."""
+    def net_details(self):
+        """Get the details of an IP address or network."""
         result = get_network_details(str(self.app.pargs.network))
 
         if result is None:
