@@ -3,6 +3,7 @@ import base64
 
 from cement import Controller, ex
 from penin.core import create_hash, get_host_details
+from penin.core.mdns import discover_devices
 
 ALGORITHMS = [
     "md5",
@@ -84,6 +85,20 @@ class Misc(Controller):
             )
         if result is None:
             self.app.log.error("Unable to handle the string")
+            return
+
+        data = {"result": result}
+        self.app.render(data, "default.jinja2")
+
+    @ex(
+        help="search for mDNS, Bonjour or ZeroConf capable devices",
+    )
+    def discover(self):
+        """Search for local devices and services."""
+        result = discover_devices()
+
+        if result is None:
+            self.app.log.error("Unable to discover devices")
             return
 
         data = {"result": result}
