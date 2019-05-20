@@ -17,7 +17,7 @@ ALGORITHMS = [
 
 
 class Misc(Controller):
-    """Representation of all IP-related commands."""
+    """Representation of various helper commands."""
 
     class Meta:
         """Meta data for the IP support."""
