@@ -90,9 +90,7 @@ class Misc(Controller):
         data = {"result": result}
         self.app.render(data, "default.jinja2")
 
-    @ex(
-        help="search for mDNS, Bonjour or ZeroConf capable devices",
-    )
+    @ex(help="search for mDNS, Bonjour or ZeroConf capable devices")
     def discover(self):
         """Search for local devices and services."""
         result = discover_devices()
