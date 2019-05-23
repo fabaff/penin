@@ -74,7 +74,7 @@ class Misc(Controller):
         ],
     )
     def base64(self):
-        """Retrieve details about the host."""
+        """Decode or encode a string as Base64."""
         if self.app.pargs.decode:
             result = base64.b64decode(self.app.pargs.string).decode(
                 "utf-8", "ignore"
