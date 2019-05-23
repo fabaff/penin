@@ -23,8 +23,7 @@ setup(
     package_data={'penin': ['templates/*']},
     include_package_data=True,
     install_requires=['cement', 'pyyaml', 'colorlog', 'jinja2', 'tinydb'],
-    entry_points="""
-        [console_scripts]
-        penin = penin.main:main
-    """,
+    entry_points={
+        'console_scripts': ['penin = penin.main:main']
+    },
 )
