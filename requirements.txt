@@ -1,4 +1,4 @@
-cement==3.0.2
+cement==3.0.4
 colorlog
 dnspython3
 extract-social-media
