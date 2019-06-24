@@ -2,7 +2,7 @@
 import base64
 
 from cement import Controller, ex
-from penin.core import create_hash, get_host_details
+from penin.core import create_hash, get_host_details, identify_hash
 from penin.core.mdns import discover_devices
 
 ALGORITHMS = [
@@ -97,6 +97,21 @@ class Misc(Controller):
 
         if result is None:
             self.app.log.error("Unable to discover devices")
+            return
+
+        data = {"result": result}
+        self.app.render(data, "default.jinja2")
+
+    @ex(
+        help="perform a reverse lookup of an IP address",
+        arguments=[(["input_hash"], {"help": "Hash to identify"})],
+    )
+    def ident_hash(self):
+        """Retrieve details about the host."""
+        result = identify_hash(self.app.pargs.input_hash)
+
+        if result is None:
+            self.app.log.error("Unable to get details about host")
             return
 
         data = {"result": result}

@@ -3,6 +3,8 @@ import platform
 import socket
 import hashlib
 
+import hashid
+
 
 def get_host_details():
     """Get details about the host that is executing PenIn."""
@@ -39,3 +41,22 @@ def create_hash(data, algorithm):
     return data
 
 
+def identify_hash(input_hash):
+    """Identify a hash."""
+    _hash = hashid.HashID()
+    hash_details = _hash.identifyHash(input_hash)
+    types = {}
+    types_list = []
+    for mode in hash_details:
+        hash_type = {}
+        if not mode.extended:
+            hash_type['hash_type'] = mode.name
+            formats = {}
+            if mode.hashcat is not None:
+                formats['hashcat'] = mode.hashcat
+            if mode.john is not None:
+                formats['john'] = mode.john
+        hash_type['formats'] = formats
+        types_list.append(hash_type)
+        types['types']=types_list
+    return types
