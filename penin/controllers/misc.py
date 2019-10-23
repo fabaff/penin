@@ -103,15 +103,15 @@ class Misc(Controller):
         self.app.render(data, "default.jinja2")
 
     @ex(
-        help="perform a reverse lookup of an IP address",
+        help="identify the hashing algorithm",
         arguments=[(["input_hash"], {"help": "Hash to identify"})],
     )
     def ident_hash(self):
-        """Retrieve details about the host."""
+        """Identify the hashing algorithm of a hash."""
         result = identify_hash(self.app.pargs.input_hash)
 
         if result is None:
-            self.app.log.error("Unable to get details about host")
+            self.app.log.error("Unable to get details about the hash")
             return
 
         data = {"result": result}
