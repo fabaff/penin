@@ -1,6 +1,7 @@
 """Support for performing DNS queries and lookups."""
 from cement import Controller, ex
 from penin.core.dns import forward_lookup, get_records, reverse_lookup
+import datetime
 
 
 class Dns(Controller):
@@ -24,6 +25,11 @@ class Dns(Controller):
         data = {"result": ip_addresses}
         self.app.render(data, "default.jinja2")
 
+        data["input"] = ip_addresses
+        data["timestamp"] = datetime.datetime.now().isoformat()
+
+        self.app.db.insert(data)
+
     @ex(
         help="perform a reverse lookup of an IP address",
         arguments=[(["ip_address"], {"help": "IP address to lookup"})],
@@ -39,6 +45,11 @@ class Dns(Controller):
 
         data = {"result": hostname}
         self.app.render(data, "default.jinja2")
+
+        data["input"] = ip_address
+        data["timestamp"] = datetime.datetime.now().isoformat()
+        self.app.db.insert(data)
+        self.app.log.debug("DNS reverse lookup done")
 
     @ex(
         help="retrieve the records of a domain",
