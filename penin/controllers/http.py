@@ -1,7 +1,12 @@
 """Support for retrieving details about HTTP servers."""
 from cement import Controller, ex
 from penin.core.http import (
-    get_headers, get_options, get_social_media, get_subjugation, get_tech)
+    get_headers,
+    get_options,
+    get_social_media,
+    get_subjugation,
+    get_tech,
+)
 
 
 class Http(Controller):
@@ -50,8 +55,6 @@ class Http(Controller):
     )
     def subjugation(self):
         """Retrieve the location of a subjugation."""
-        data = {}
-
         result = get_subjugation(self.app.pargs.target)
 
         if result is None:
